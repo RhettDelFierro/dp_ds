@@ -44,4 +44,11 @@ func (list *LinkedList) GetLast() *Node {
 	return nil
 }
 
+func (list *LinkedList) Clear() {
+	list.Head = nil
+}
 
+func (list *LinkedList) RemoveFirst() {
+	if list.Head == nil { return }
+	list.Head = list.Head.Next
+}

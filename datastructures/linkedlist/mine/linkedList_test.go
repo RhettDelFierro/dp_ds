@@ -66,6 +66,23 @@ func TestGetLast(t *testing.T) {
 	linkedList := NewLinkedList()
 
 	if linkedList.GetLast().Data != "test" {
-		t.Errorf("LinkedList.GetFirst returns wrong value. Wanted: '%s', got: '%s'", "test", linkedList.GetLast().Data)
+		t.Errorf("LinkedList.GetLast returns wrong value. Wanted: '%s', got: '%s'", "test", linkedList.GetLast().Data)
 	}
 }
+
+func TestClear(t *testing.T) {
+	linkedList := NewLinkedList()
+	linkedList.Clear()
+	if linkedList.Head != nil {
+		t.Errorf("LinkedList.Clear does not clear list. Wanted: '%s', got: '%s'", (*Node)(nil), linkedList.Head)
+	}
+}
+
+func TestRemoveFirst(t *testing.T) {
+	linkedList := NewLinkedList()
+	linkedList.RemoveFirst()
+	if linkedList.Head.Data != "twotest" {
+		t.Errorf("LinkedList.RemoveFirst() does not work. Wanted: '%s', got: '%s'", "twotest", linkedList.Head.Data)
+	}
+}
+ad
