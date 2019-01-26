@@ -116,3 +116,38 @@ func TestGetAt(t *testing.T) {
 		t.Errorf("LinkedList.GetAt() does not work. Wanted: '%s', got: '%s'", "test", three.Data)
 	}
 }
+
+func TestRemoveAt(t *testing.T) {
+	linkedList := NewLinkedList()
+	linkedList.RemoveAt(1)
+	test := linkedList.GetAt(1)
+
+	if test.Data != "test" {
+		t.Errorf("LinkedList.RemoveAt() does not work. Wanted: '%s', got: '%s'", "test", test.Data)
+	}
+}
+
+
+func TestInsertAt(t *testing.T) {
+	linkedList := NewLinkedList()
+	linkedList.InsertAt("insertedtest", 2)
+	four := linkedList.GetAt(3)
+
+	if four.Data != "test" {
+		t.Errorf("LinkedList.InsertAt() does not work. Wanted: '%s', got: '%s'", "test", four.Data)
+	}
+
+	inserted := linkedList.GetAt(2)
+	if inserted.Data != "insertedtest" {
+		t.Errorf("LinkedList.InsertAt() does not work. Wanted: '%s', got: '%s'", "insertedtest", inserted.Data)
+	}
+}
+
+
+func TestForEach(t *testing.T) {
+	linkedList := NewLinkedList()
+	linkedList.ForEach(func (x string) string { return x + "!"})
+	if linkedList.GetAt(1).Data != "twotest!" {
+		t.Errorf("LinkedList.ForEach() does not work. Wanted: '%s', got: '%s'", "twotest!", linkedList.GetAt(1).Data)
+	}
+}

@@ -92,3 +92,41 @@ func (list *LinkedList) GetAt(index int) *Node {
 
 	return nil
 }
+
+func (list *LinkedList) RemoveAt(index int) {
+	if list.Head == nil { return }
+	if index == 0 { list.Head = list.Head.Next }
+
+	// check if out of range:
+	if previousNode := list.GetAt(index - 1); previousNode == nil || previousNode.Next == nil {
+		return
+	} else {
+		previousNode.Next = previousNode.Next.Next
+	}
+}
+
+func (list *LinkedList) InsertAt(data string, index int) {
+	if list.Head == nil || index == 0 { list.InsertFirst(data) }
+
+	 if previousNode := list.GetAt(index - 1); previousNode == nil {
+		lastNode := list.GetLast()
+		lastNode.Next = &Node{
+			Data: data,
+			Next: lastNode.Next,
+		}
+	} else {
+		// connect the inserted node to the previous node's next:
+		previousNode.Next = &Node{
+			Data: data,
+			Next: previousNode.Next,
+		}
+	 }
+}
+
+func (list *LinkedList) ForEach(fn func(string) string) {
+	currentNode := list.Head
+	for currentNode != nil {
+		currentNode.Data = fn(currentNode.Data)
+		currentNode = currentNode.Next
+	}
+}
