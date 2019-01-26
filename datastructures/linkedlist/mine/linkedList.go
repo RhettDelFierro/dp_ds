@@ -52,3 +52,43 @@ func (list *LinkedList) RemoveFirst() {
 	if list.Head == nil { return }
 	list.Head = list.Head.Next
 }
+
+
+func (list *LinkedList) RemoveLast() {
+	if list.Head == nil { return }
+	// if this is the only element in the list, remove it:
+	if list.Head.Next == nil { list.Head = nil }
+
+	previousNode := list.Head
+	currentNode := list.Head.Next
+	for currentNode.Next != nil {
+		previousNode = currentNode
+		currentNode = currentNode.Next
+	}
+
+	previousNode.Next = nil
+}
+
+func (list *LinkedList) InsertLast(data string) {
+	last := list.GetLast()
+
+	if last != nil {
+		last.Next = &Node{Data: data}
+	} else {
+		list.Head = &Node{Data: data}
+	}
+}
+
+func (list *LinkedList) GetAt(index int) *Node {
+	counter := 0
+	currentNode := list.Head
+
+	for currentNode != nil {
+		if index == counter { return currentNode }
+
+		counter++
+		currentNode = currentNode.Next
+	}
+
+	return nil
+}

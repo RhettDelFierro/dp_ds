@@ -85,4 +85,34 @@ func TestRemoveFirst(t *testing.T) {
 		t.Errorf("LinkedList.RemoveFirst() does not work. Wanted: '%s', got: '%s'", "twotest", linkedList.Head.Data)
 	}
 }
-ad
+
+func TestRemoveLast(t *testing.T) {
+	linkedList := NewLinkedList()
+	linkedList.RemoveLast()
+	if linkedList.GetLast().Data != "twotest" {
+		t.Errorf("LinkedList.GetLast() does not work. Wanted: '%s', got: '%s'", "twotest", linkedList.GetLast().Data)
+	}
+}
+
+func TestInsertLast(t *testing.T) {
+	linkedList := NewLinkedList()
+	linkedList.InsertLast("testminusone")
+	if linkedList.GetLast().Data != "testminusone" {
+		t.Errorf("LinkedList.InsertLast() does not work. Wanted: '%s', got: '%s'", "testminusone", linkedList.GetLast().Data)
+	}
+}
+
+func TestGetAt(t *testing.T) {
+	linkedList := NewLinkedList()
+	linkedList.InsertLast("testminusone")
+	two := linkedList.GetAt(1)
+
+	if two.Data != "twotest" {
+		t.Errorf("LinkedList.GetAt() does not work. Wanted: '%s', got: '%s'", "twotest", two.Data)
+	}
+
+	three := linkedList.GetAt(2)
+	if three.Data != "test" {
+		t.Errorf("LinkedList.GetAt() does not work. Wanted: '%s', got: '%s'", "test", three.Data)
+	}
+}
