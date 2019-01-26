@@ -28,5 +28,19 @@ func TestInsertFirst(t *testing.T) {
 	if linkedList.Head.Next.Data != "test" {
 		t.Errorf("LinkedList.InsertFirst does not push head data. Wanted: '%s', got: '%s'", "test", linkedList.Head.Next.Data)
 	}
+
+	if linkedList.Size() != 2 {
+		t.Errorf("LinkedList.Size does returns wrong value. Wanted: '%d', got: '%d'", 2, linkedList.Size())
+	}
 }
 
+func TestInsertSize(t *testing.T) {
+	linkedList := LinkedList{}
+	linkedList.InsertFirst("test")
+	linkedList.InsertFirst("twotest")
+	linkedList.InsertFirst("threetest")
+
+	if linkedList.Size() != 3 {
+		t.Errorf("LinkedList.Size does returns wrong value. Wanted: '%d', got: '%d'", 3, linkedList.Size())
+	}
+}

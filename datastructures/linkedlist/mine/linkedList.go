@@ -16,3 +16,14 @@ func (list *LinkedList) InsertFirst(data string) {
 	}
 	list.Head = node
 }
+
+func (list *LinkedList) Size() int {
+	counter := 0
+	current := list.Head
+	for current != nil {
+		counter++
+		current = current.Next
+	}
+
+	return counter
+}
