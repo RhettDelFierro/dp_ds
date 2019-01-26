@@ -4,6 +4,14 @@ import (
 	"testing"
 )
 
+func NewLinkedList() LinkedList {
+	linkedList := LinkedList{}
+	linkedList.InsertFirst("test")
+	linkedList.InsertFirst("twotest")
+	linkedList.InsertFirst("threetest")
+	return linkedList
+}
+
 func TestInsertFirst(t *testing.T) {
 	linkedList := LinkedList{}
 	linkedList.InsertFirst("test")
@@ -42,5 +50,22 @@ func TestInsertSize(t *testing.T) {
 
 	if linkedList.Size() != 3 {
 		t.Errorf("LinkedList.Size does returns wrong value. Wanted: '%d', got: '%d'", 3, linkedList.Size())
+	}
+}
+
+func TestGetFirst(t *testing.T) {
+	linkedList := NewLinkedList()
+
+	if linkedList.GetFirst().Data != "threetest" {
+		t.Errorf("LinkedList.GetFirst returns wrong value. Wanted: '%s', got: '%s'", "threetest", linkedList.GetFirst().Data)
+	}
+}
+
+
+func TestGetLast(t *testing.T) {
+	linkedList := NewLinkedList()
+
+	if linkedList.GetLast().Data != "test" {
+		t.Errorf("LinkedList.GetFirst returns wrong value. Wanted: '%s', got: '%s'", "test", linkedList.GetLast().Data)
 	}
 }

@@ -27,3 +27,21 @@ func (list *LinkedList) Size() int {
 
 	return counter
 }
+
+func (list *LinkedList) GetFirst() *Node { return list.Head }
+
+func (list *LinkedList) GetLast() *Node {
+	if list.Head == nil { return list.Head }
+
+	currentNode := list.Head
+	for currentNode != nil {
+		if currentNode.Next == nil {
+			return currentNode
+		}
+		currentNode = currentNode.Next
+	}
+
+	return nil
+}
+
+
