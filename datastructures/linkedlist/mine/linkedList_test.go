@@ -61,7 +61,6 @@ func TestGetFirst(t *testing.T) {
 	}
 }
 
-
 func TestGetLast(t *testing.T) {
 	linkedList := NewLinkedList()
 
@@ -127,7 +126,6 @@ func TestRemoveAt(t *testing.T) {
 	}
 }
 
-
 func TestInsertAt(t *testing.T) {
 	linkedList := NewLinkedList()
 	linkedList.InsertAt("insertedtest", 2)
@@ -143,10 +141,9 @@ func TestInsertAt(t *testing.T) {
 	}
 }
 
-
 func TestForEach(t *testing.T) {
 	linkedList := NewLinkedList()
-	linkedList.ForEach(func (x string) string { return x + "!"})
+	linkedList.ForEach(func(x string) string { return x + "!" })
 	if linkedList.GetAt(1).Data != "twotest!" {
 		t.Errorf("LinkedList.ForEach() does not work. Wanted: '%s', got: '%s'", "twotest!", linkedList.GetAt(1).Data)
 	}

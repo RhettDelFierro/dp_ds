@@ -31,7 +31,9 @@ func (list *LinkedList) Size() int {
 func (list *LinkedList) GetFirst() *Node { return list.Head }
 
 func (list *LinkedList) GetLast() *Node {
-	if list.Head == nil { return list.Head }
+	if list.Head == nil {
+		return list.Head
+	}
 
 	currentNode := list.Head
 	for currentNode != nil {
@@ -49,15 +51,20 @@ func (list *LinkedList) Clear() {
 }
 
 func (list *LinkedList) RemoveFirst() {
-	if list.Head == nil { return }
+	if list.Head == nil {
+		return
+	}
 	list.Head = list.Head.Next
 }
 
-
 func (list *LinkedList) RemoveLast() {
-	if list.Head == nil { return }
+	if list.Head == nil {
+		return
+	}
 	// if this is the only element in the list, remove it:
-	if list.Head.Next == nil { list.Head = nil }
+	if list.Head.Next == nil {
+		list.Head = nil
+	}
 
 	previousNode := list.Head
 	currentNode := list.Head.Next
@@ -84,7 +91,9 @@ func (list *LinkedList) GetAt(index int) *Node {
 	currentNode := list.Head
 
 	for currentNode != nil {
-		if index == counter { return currentNode }
+		if index == counter {
+			return currentNode
+		}
 
 		counter++
 		currentNode = currentNode.Next
@@ -94,8 +103,12 @@ func (list *LinkedList) GetAt(index int) *Node {
 }
 
 func (list *LinkedList) RemoveAt(index int) {
-	if list.Head == nil { return }
-	if index == 0 { list.Head = list.Head.Next }
+	if list.Head == nil {
+		return
+	}
+	if index == 0 {
+		list.Head = list.Head.Next
+	}
 
 	// check if out of range:
 	if previousNode := list.GetAt(index - 1); previousNode == nil || previousNode.Next == nil {
@@ -106,9 +119,11 @@ func (list *LinkedList) RemoveAt(index int) {
 }
 
 func (list *LinkedList) InsertAt(data string, index int) {
-	if list.Head == nil || index == 0 { list.InsertFirst(data) }
+	if list.Head == nil || index == 0 {
+		list.InsertFirst(data)
+	}
 
-	 if previousNode := list.GetAt(index - 1); previousNode == nil {
+	if previousNode := list.GetAt(index - 1); previousNode == nil {
 		lastNode := list.GetLast()
 		lastNode.Next = &Node{
 			Data: data,
@@ -120,7 +135,7 @@ func (list *LinkedList) InsertAt(data string, index int) {
 			Data: data,
 			Next: previousNode.Next,
 		}
-	 }
+	}
 }
 
 func (list *LinkedList) ForEach(fn func(string) string) {
