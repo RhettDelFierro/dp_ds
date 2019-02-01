@@ -108,6 +108,7 @@ func (list *LinkedList) RemoveAt(index int) {
 	}
 	if index == 0 {
 		list.Head = list.Head.Next
+		return
 	}
 
 	// check if out of range:
@@ -121,6 +122,7 @@ func (list *LinkedList) RemoveAt(index int) {
 func (list *LinkedList) InsertAt(data string, index int) {
 	if list.Head == nil || index == 0 {
 		list.InsertFirst(data)
+		return
 	}
 
 	if previousNode := list.GetAt(index - 1); previousNode == nil {
