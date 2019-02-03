@@ -3,15 +3,15 @@ package ds
 import "fmt"
 
 // see https://blog.golang.org/slices
-type Queue []string
+type Stack []string
 
-func (q *Queue) Add(record []string) {
-	*q = append(record, *q...)
+func (q *Stack) Add(record []string) {
+	*q = append(*q, record...)
 	fmt.Println(*q)
 }
 
 // see => Pointers to slices: Method receivers
-func (q *Queue) Remove() {
+func (q *Stack) Remove() {
 	s := *q
 	*q = s[:len(s)-1]
 }
