@@ -8,24 +8,24 @@ func NewStack() *Stack {
 	return &Stack{}
 }
 
-func TestAdd(t *testing.T) {
+func TestPush(t *testing.T) {
 	stack := NewStack()
-	stack.Add([]string{"blah"})
+	stack.Push([]string{"blah"})
 	if len(*stack) != 1 {
-		t.Errorf("Stack.Add does not add. Wanted: '%d', got: '%d'", 1, len(*stack))
+		t.Errorf("Stack.Push does not add. Wanted: '%d', got: '%d'", 1, len(*stack))
 	}
-	stack.Add([]string{"blah"})
+	stack.Push([]string{"blah"})
 	if len(*stack) != 2 {
-		t.Errorf("Stack.Add does not add. Wanted: '%d', got: '%d'", 2, len(*stack))
+		t.Errorf("Stack.Push does not add. Wanted: '%d', got: '%d'", 2, len(*stack))
 	}
 }
 
-func TestRemove(t *testing.T) {
+func TestPop(t *testing.T) {
 	stack := NewStack()
-	stack.Add([]string{"blah"})
-	stack.Add([]string{"foo"})
-	stack.Remove()
+	stack.Push([]string{"blah"})
+	stack.Push([]string{"foo"})
+	stack.Pop()
 	if len(*stack) != 1 {
-		t.Errorf("Stack.Remove() does not remove. Wanted: '%d', got: '%d'", 1, len(*stack))
+		t.Errorf("Stack.Pop() does not remove. Wanted: '%d', got: '%d'", 1, len(*stack))
 	}
 }
