@@ -11,6 +11,10 @@ type TrieNode struct {
 	End      bool
 }
 
+type Trie struct {
+	Root *TrieNode
+}
+
 func (tn *TrieNode) GetWord() string {
 	var output []string
 	node := tn
@@ -20,10 +24,6 @@ func (tn *TrieNode) GetWord() string {
 		node = node.Parent
 	}
 	return strings.Join(output, "")
-}
-
-type Trie struct {
-	Root *TrieNode
 }
 
 func (t *Trie) Insert(word string) {
