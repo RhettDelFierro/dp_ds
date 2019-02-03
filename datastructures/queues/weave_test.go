@@ -1,7 +1,6 @@
 package ds
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -18,7 +17,6 @@ func TestWeave(t *testing.T) {
 	queueTwo.Add([]string{"bar3"})
 	queueTwo.Add([]string{"bar4"})
 	result := weave(queueOne, queueTwo)
-	fmt.Println(result)
 	res1 := result.Remove()
 	if res1 != "foo1" {
 		t.Errorf("Queue.Add does not add. Wanted: '%s', got: '%s'", "foo1", res1)
