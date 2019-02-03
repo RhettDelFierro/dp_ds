@@ -43,3 +43,16 @@ func (t *Trie) Insert(word string) {
 		}
 	}
 }
+
+func (t *Trie) Contains(word string) bool {
+	node := t.Root
+	for i := 0; i < len(word); i++ {
+		key := string([]rune(word)[i])
+		if node.Children[key] != nil {
+			node = node.Children[key]
+		} else {
+			return false
+		}
+	}
+	return node.End
+}

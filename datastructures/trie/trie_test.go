@@ -22,3 +22,13 @@ func TestInsert(t *testing.T) {
 		t.Errorf("Trie.Insert and TrieNode.GetWord do not work together. Wanted: '%d', got: '%d'", 4, len(trie.Root.Children["b"].GetWord()))
 	}
 }
+
+func TestContains(t *testing.T) {
+	trie := NewTrie()
+	trieNode := NewTrieNode()
+	trie.Root = trieNode
+	trie.Insert("blah")
+	if trie.Contains("blah") == false {
+		t.Errorf("Trie.Contains is not working. Wanted: '%v', got: '%v'", true, trie.Contains("blah"))
+	}
+}
