@@ -32,3 +32,14 @@ func TestContains(t *testing.T) {
 		t.Errorf("Trie.Contains is not working. Wanted: '%v', got: '%v'", true, trie.Contains("blah"))
 	}
 }
+
+func TestFind(t *testing.T) {
+	trie := NewTrie()
+	trieNode := NewTrieNode()
+	trie.Root = trieNode
+	trie.Insert("blah")
+	trie.Insert("blahbar")
+	if len(trie.Find("blah")) != 2 {
+		t.Errorf("Trie.Find is not working. Wanted: '%d', got: '%d'", 2, len(trie.Find("blah")))
+	}
+}
